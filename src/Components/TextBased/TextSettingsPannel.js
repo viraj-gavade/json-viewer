@@ -79,11 +79,22 @@ const TextSettingsPannel = ({ jsonData , setJsonData }) => {
                             {shareError}
                         </DialogContentText>
                     ) : (
-                        <DialogContentText>
-                            Your JSON has been shared!<br />
-                            Key: {shareResult?.key}<br />
-                            Expires at: {shareResult?.expiresAt}
-                        </DialogContentText>
+                        <>
+                            <DialogContentText>
+                                Your JSON has been shared!<br />
+                                Share Link: {`https://api.nekonik.com/neko-nik/json-share/${shareResult?.id}`}<br />
+                                Expires at: {shareResult?.expiresAt}
+                            </DialogContentText>
+                            <Button 
+                                variant="outlined" 
+                                sx={{ mt: 2 }}
+                                onClick={() => {
+                                    navigator.clipboard.writeText(`https://api.nekonik.com/neko-nik/json-share/${shareResult?.id}`);
+                                }}
+                            >
+                                Copy Link
+                            </Button>
+                        </>
                     )}
                 </DialogContent>
                 <DialogActions>
