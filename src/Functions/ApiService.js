@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.nekonik.com/neko-nik/json-share';
-const API_KEY = 'TMDRHRQSyWuRi0A0g40gS';
+
+const BASE_URL = 'https://jsonviewer.nekonik.com/share';
+const API_KEY = 'API_KEY';
 
 
 export const postJsonData = async (jsonData) => {

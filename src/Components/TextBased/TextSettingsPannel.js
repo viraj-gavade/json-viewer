@@ -79,6 +79,7 @@ const TextSettingsPannel = ({ jsonData , setJsonData }) => {
                             {shareError}
                         </DialogContentText>
                     ) : (
+
                         <>
                             <DialogContentText>
                                 Your JSON has been shared!<br />
@@ -95,6 +96,7 @@ const TextSettingsPannel = ({ jsonData , setJsonData }) => {
                                 Copy Link
                             </Button>
                         </>
+
                     )}
                 </DialogContent>
                 <DialogActions>
