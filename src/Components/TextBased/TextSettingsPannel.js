@@ -45,7 +45,7 @@ const TextSettingsPannel = ({ jsonData , setJsonData }) => {
 
     const handleShareJSON = async () => {
         try {
-            const parsedData = JSON.parse(jsonData);
+            const parsedData = await JSON.parse(jsonData);
             const result = await postJsonData(parsedData);
             setShareResult(result);
             setShareDialog(true);
@@ -79,7 +79,6 @@ const TextSettingsPannel = ({ jsonData , setJsonData }) => {
                             {shareError}
                         </DialogContentText>
                     ) : (
-
                         <>
                             <DialogContentText>
                                 Your JSON has been shared!<br />
@@ -96,7 +95,6 @@ const TextSettingsPannel = ({ jsonData , setJsonData }) => {
                                 Copy Link
                             </Button>
                         </>
-
                     )}
                 </DialogContent>
                 <DialogActions>

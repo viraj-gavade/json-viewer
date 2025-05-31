@@ -3,6 +3,7 @@ import React from 'react'
 import TextSettingsPannel from '../../Components/TextBased/TextSettingsPannel'
 import InputTextArea from '../../Components/TextBased/InputTextArea'
 import { getSharedJson } from '../../Functions/ApiService'
+import { getSharedJson } from '../../Functions/ApiService'
 
 const Text = ({ jsonData, setJsonData }) => {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -17,7 +18,6 @@ const Text = ({ jsonData, setJsonData }) => {
           setIsLoading(true);
           const content = await getSharedJson(uuid);
           if (content) {
-            
             setJsonData(typeof content === 'string' ? content : JSON.stringify(content, null, 2));
           }
         } catch (error) {
@@ -29,11 +29,18 @@ const Text = ({ jsonData, setJsonData }) => {
     };
 
     loadSharedJson();
-  }, []); 
+  }, []);
   
   return (
     <Box sx={{ width: '100%' }}>
       <TextSettingsPannel jsonData={jsonData} setJsonData={setJsonData} />
+      {isLoading ? (
+        <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
+          Loading shared JSON...
+        </Box>
+      ) : (
+        <InputTextArea jsonData={jsonData} setJsonData={setJsonData} />
+      )}
       {isLoading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
           Loading shared JSON...
